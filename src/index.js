@@ -2,8 +2,9 @@ import "core-js/features/map";
 import "core-js/features/set";
 import React from "react";
 import ReactDOM from "react-dom";
-import bridge from "@vkontakte/vk-bridge";
-import App from "./App";
+// import bridge from "@vkontakte/vk-bridge";
+import App from "./components/App";
+
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
 import firebase from "firebase/app";
@@ -29,7 +30,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-var db = firebase.firestore();
+/* var db = firebase.firestore();
 db.collection("desks").get().then((querySnapshot) => {
   querySnapshot.forEach((doc) => {
       console.log(doc.data());
@@ -37,7 +38,7 @@ db.collection("desks").get().then((querySnapshot) => {
 });
 
 // Init VK  Mini App
-bridge.send("VKWebAppInit");
+bridge.send("VKWebAppInit"); */
 
 ReactDOM.render(<App />, document.getElementById("root"));
 if (process.env.NODE_ENV === "development") {
