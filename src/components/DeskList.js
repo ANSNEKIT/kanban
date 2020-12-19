@@ -9,7 +9,7 @@ const DeskList = () => {
   const [desks, setDesk] = useState([]);
 
   useEffect(() => {
-    var db = firebase.firestore();
+    const db = firebase.firestore();
 
     db.collection("desks").get().then((querySnapshot) => {
       const desks = [];
