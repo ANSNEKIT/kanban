@@ -30,13 +30,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-/* var db = firebase.firestore();
-db.collection("desks").get().then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
-      console.log(doc.data());
-  });
-});
-
+/* 
 // Init VK  Mini App
 bridge.send("VKWebAppInit"); */
 

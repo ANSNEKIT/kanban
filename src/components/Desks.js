@@ -1,12 +1,17 @@
 import React, { Fragment } from 'react';
-import { Button } from '@vkontakte/vkui';
+import { PanelHeader } from '@vkontakte/vkui';
 import PropTypes from 'prop-types';
+import DeskList from './DeskList.js';
 
 const Desks = ({ onChangePanel }) => {
   return (
     <Fragment>
-      <div>Я панель с досками</div>
-			<Button onClick={onChangePanel}>Перейти к колонкам</Button>
+      <PanelHeader >Стартовый экран</PanelHeader>
+			
+      <DeskList />	
+
+      {/* <div>Я панель с досками</div>
+			<Button onClick={onChangePanel}>Перейти к колонкам</Button> */}
     </Fragment>
   )
 }
