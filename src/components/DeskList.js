@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect} from "react";
+import PropTypes from "prop-types";
 import firebase from "firebase/app";
-
-// import PropTypes from "prop-types";
 import { CardGrid } from "@vkontakte/vkui";
-import DeskItem from "./DeskItem";
+import DeskItem from "./DeskItem/DeskItem";
 
-const DeskList = () => {
-  const [desks, setDesk] = useState([]);
-
+const DeskList = ({ desks, onDelete, onLoadDesks }) => {
+  // Запрос в базу данных за досками
   useEffect(() => {
     const db = firebase.firestore();
 
@@ -20,11 +18,10 @@ const DeskList = () => {
           name: doc.data().name,
         });
       });
-      setDesk(desks);
+
+      onLoadDesks(desks);
     });
-
   }, []);
-
 
   if (!desks.length) {
     return null;
@@ -32,11 +29,20 @@ const DeskList = () => {
   
   return (
     <CardGrid>
-      {desks.map(({ name }) => (
-        <DeskItem key={name}>{name}</DeskItem>
+      {desks.map(({id, name }) => (
+        <DeskItem key={id} id={id} onDelete={onDelete}>{name}</DeskItem>
       ))}
     </CardGrid>
   );
+};
+
+DeskList.propTypes = {
+  desks: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onLoadDesks: PropTypes.func.isRequired,
 };
 
 export default DeskList;
