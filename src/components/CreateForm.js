@@ -50,7 +50,7 @@ const CreateForm = ({ onSubmit, placeholder, actionTitle }) => {
   }
 
   return (
-    <Card mode="shadow">
+    <Card size="l" mode="shadow">
       <FormLayout onSubmit={submit}>
         <Input 
           autoFocus
