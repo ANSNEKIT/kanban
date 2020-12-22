@@ -13,7 +13,6 @@ const DeskItem = ({ id, children, onDelete }) => {
     .delete()
     .then(() => onDelete(id))
     .catch(console.error);
-
   }
 
   
