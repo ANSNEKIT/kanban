@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import firebase from "firebase/app";
-import CreateForm from './CreateForm.js';
+import CreateForm from '../CreateForm/CreateForm.js';
 
 
-const CardCreate = ({ onCreate }) => {
+const DeskCreate = ({ onCreate }) => {
 
-  const createCard = (name) => {
+  const createDesk = (name) => {
   
     const db = firebase.firestore();
 
-    return db.collection("cards")
+    return db.collection("desks")
     .add({ name })
     .then((docRef) => docRef.get())
     .then((doc) => onCreate({id: doc.id, ...doc.data() }))
@@ -21,15 +21,15 @@ const CardCreate = ({ onCreate }) => {
 
   return (
     <CreateForm
-      onSubmit={createCard}
-      placeholder="Введите название карточки"
-      actionTitle="Создать карточку"
+      onSubmit={createDesk}
+      placeholder="Введите название доски"
+      actionTitle="Создать доску"
     />
   )
 }
 
-CardCreate.propTypes = {
+DeskCreate.propTypes = {
   onCreate: PropTypes.func.isRequired,
 }
 
-export default CardCreate
+export default DeskCreate

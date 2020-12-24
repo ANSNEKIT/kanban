@@ -4,7 +4,7 @@ import firebase from "firebase/app";
 import { Button, Card, Div, Header } from '@vkontakte/vkui';
 
 import './Column.css';
-import Cards from '../../Cards';
+import Cards from '../Cards/Cards';
 
 const Column = ({ name, id, onDelete }) => {
   const deleteColumn = () => {
@@ -24,7 +24,7 @@ const Column = ({ name, id, onDelete }) => {
         <Button mode="destructive" onClick={deleteColumn} >Удалить</Button>
       </div>
       <Card className="Column__wrapper">
-        <Cards />
+        <Cards columnId={id} />
       </Card>
     </Div>
   )
