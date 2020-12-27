@@ -1,27 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import firebase from "firebase/app";
 import { Button, Card, Div, Header } from '@vkontakte/vkui';
 
 import './Column.css';
 import Cards from '../Cards/Cards';
+import { deleteColumn } from '../../actions';
 
 const Column = ({ name, id, onDelete }) => {
-  const deleteColumn = () => {
-    const db = firebase.firestore();
-
-    db.collection("columns")
-    .doc(id)
-    .delete()
-    .then(() => onDelete(id))
-    .catch(console.error);
+  const deleteItem = () => {
+    deleteColumn(id)
+      .then(() => onDelete(id))
+      .catch(console.error);
   };
 
   return (
     <Div className="Column">
       <div className="Column__header">
         <Header>{name}</Header>
-        <Button mode="destructive" onClick={deleteColumn} >Удалить</Button>
+        <Button mode="destructive" onClick={deleteItem} >Удалить</Button>
       </div>
       <Card className="Column__wrapper">
         <Cards columnId={id} />

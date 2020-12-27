@@ -1,33 +1,16 @@
 import React, { Fragment, useEffect } from 'react';
 import { PanelHeader, Gallery, PanelHeaderBack } from '@vkontakte/vkui';
-import firebase from "firebase/app";
 import PropTypes from 'prop-types'
 
 import Column from '../../components/Column/Column';
 import './Columns.css';
 import ColumnCreate from '../../components/ColumnCreate/ColumnCreate';
+import { getColumns } from '../../actions';
 
 const Columns = ({ desk, goToDesks, addColumn, removeColumn, columns, setColumns  }) => {
   // Запрос в базу данных за колонками
   useEffect(() => {
-
-    const db = firebase.firestore();
-
-    db.collection("columns").where('deskId', '==', desk.id).get().then((querySnapshot) => {
-      const columns = [];
-
-      querySnapshot.forEach((doc) => {
-        const {deskId, name} = doc.data();
-
-        columns.push({
-          id: doc.id,
-          deskId,
-          name,
-        });
-      });
-
-      setColumns(columns);
-    });
+    getColumns(desk.id).then((columns) => setColumns(columns));
   }, []);
 
   return (
