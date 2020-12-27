@@ -3,9 +3,9 @@ import { PanelHeader, Gallery, PanelHeaderBack } from '@vkontakte/vkui';
 import firebase from "firebase/app";
 import PropTypes from 'prop-types'
 
-import Column from '../../Column/Column.js';
+import Column from '../../components/Column/Column';
 import './Columns.css';
-import ColumnCreate from '../../ColumnCreate/ColumnCreate.js';
+import ColumnCreate from '../../components/ColumnCreate/ColumnCreate';
 
 const Columns = ({ desk, goToDesks, addColumn, removeColumn, columns, setColumns  }) => {
   // Запрос в базу данных за колонками

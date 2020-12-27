@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { View, Panel } from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
 
-import Desks from "../panels/Desks/Desks.js";
-import Columns from '../panels/Columns/Columns.js';
+import Desks from "../../panels/Desks/Desks";
+import Columns from '../../panels/Columns/Columns';
 
 
 const panel = {

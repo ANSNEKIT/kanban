@@ -3,33 +3,11 @@ import "core-js/features/set";
 import React from "react";
 import ReactDOM from "react-dom";
 // import bridge from "@vkontakte/vk-bridge";
+
+import * as backend from "./models/firebase";
 import App from "./components/App/App.js";
 
-// Firebase App (the core Firebase SDK) is always required and
-// must be listed before other Firebase SDKs
-import firebase from "firebase/app";
-
-// Add the Firebase services that you want to use
-import "firebase/auth";
-import "firebase/firestore";
-import "firebase/analytics";
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
-  apiKey: "AIzaSyDm_arhtdgr3lDRHkY977dEdNJoq-x_lPw",
-  authDomain: "kanban-ce2ec.firebaseapp.com",
-  databaseURL: "https://kanban-ce2ec-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "kanban-ce2ec",
-  storageBucket: "kanban-ce2ec.appspot.com",
-  messagingSenderId: "314022319056",
-  appId: "1:314022319056:web:526432704c8ace5128dfd5",
-  measurementId: "G-0EJ37ZMP41"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-
+backend.initialize();
 /* 
 // Init VK  Mini App
 bridge.send("VKWebAppInit"); */
