@@ -15,38 +15,37 @@ const statuses = {
 }
 
 const CreateForm = ({ onSubmit, placeholder, actionTitle }) => {
-
   const [mode, setMode] = useState(modes.button);
   const [name, setName] = useState('');
   const [status, setStatus] = useState(statuses.default);
-
   const reset = () => {
     setMode(modes.button);
-    setName('');
     setStatus(statuses.default);
-  }
-
-  const submit = (evt) => {
-    if (evt) {
-      evt.preventDefault();
+    setName('');
+  };
+  const submit = (event) => {
+    if (event) {
+      event.preventDefault();
     }
+
     if (!name.trim().length) {
       setStatus(statuses.error);
       return;
     }
 
-    onSubmit(name).then(reset);
-  }
+    onSubmit(name).then(reset)
+  };
 
   if (mode === modes.button) {
     return (
-      <Button 
-        onClick={() => setMode(modes.form)} 
-        before={<Icon24Add/>} 
-        size="xl" 
+      <Button
+        onClick={() => setMode(modes.form)}
+        before={<Icon24Add />}
+        size="xl"
       >
-      {actionTitle}</Button>
-    )
+        {actionTitle}
+      </Button>
+    );
   }
 
   return (
@@ -66,13 +65,13 @@ const CreateForm = ({ onSubmit, placeholder, actionTitle }) => {
         
       </FormLayout>
     </Card>
-  )
-}
+  );
+};
 
 CreateForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   actionTitle: PropTypes.string.isRequired,
-}
+};
 
-export default CreateForm
+export default CreateForm;
