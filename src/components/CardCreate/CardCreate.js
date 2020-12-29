@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import CreateForm from '../CreateForm/CreateForm.js';
 import { cardCreate } from '../../actions/index.js';
+import Context from '../App/context.js';
 
-const CardCreate = ({ onCreate, columnId }) => {
+const CardCreate = ({ columnId }) => {
+  const {addCard} = useContext(Context);
   const createItem = (name) => {
     return cardCreate(name, columnId)
-      .then((doc) => onCreate({id: doc.id, ...doc.data() }))
+      .then((doc) => addCard({id: doc.id, ...doc.data() }))
       .catch(console.error);
   };
-
 
   return (
     <CreateForm
@@ -18,12 +19,11 @@ const CardCreate = ({ onCreate, columnId }) => {
       placeholder="Введите название карточки"
       actionTitle="Создать карточку"
     />
-  )
-}
+  );
+};
 
 CardCreate.propTypes = {
   columnId: PropTypes.string.isRequired,
-  onCreate: PropTypes.func.isRequired,
-}
+};
 
-export default CardCreate
+export default CardCreate;
