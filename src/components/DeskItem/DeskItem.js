@@ -11,7 +11,8 @@ const DeskItem = ({ id, children }) => {
 
   const goToColumnPanel = () => goToColumns(id);
 
-  const deleteItem = () => {
+  const deleteItem = (evt) => {
+    evt.stopPropagation();
     deleteDesk(id)
       .then(() => removeDesk(id))
       .catch(console.error);

@@ -7,17 +7,18 @@ import Icon24Add from '@vkontakte/icons/dist/24/add';
 const modes = {
   button: 'button',
   form: 'form',
-}
+};
 
 const statuses = {
   default: 'default',
   error: 'error',
-}
+};
 
 const CreateForm = ({ onSubmit, placeholder, actionTitle }) => {
   const [mode, setMode] = useState(modes.button);
   const [name, setName] = useState('');
   const [status, setStatus] = useState(statuses.default);
+
   const reset = () => {
     setMode(modes.button);
     setStatus(statuses.default);
@@ -33,7 +34,7 @@ const CreateForm = ({ onSubmit, placeholder, actionTitle }) => {
       return;
     }
 
-    onSubmit(name).then(reset)
+    onSubmit(name).then(reset);
   };
 
   if (mode === modes.button) {
