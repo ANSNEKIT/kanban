@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Card, Div } from '@vkontakte/vkui';
+import { Card, Div } from '@vkontakte/vkui';
 import PropTypes from 'prop-types';
 
 import './ColumnCard.css';
@@ -15,11 +15,8 @@ const ColumnCard = ({ children, id }) => {
   };
 
   return (
-    <Card size="l">
-      <Div className="ColumnCard__wrapper">
-        {children}
-        <Button mode="destructive" onClick={deleteItem}>Удалить</Button>
-      </Div>
+    <Card size="l" mode="outline">
+      <Div className="ColumnCard__wrapper">{children}</Div>
     </Card>
   );
 };

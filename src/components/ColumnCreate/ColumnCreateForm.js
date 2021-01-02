@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { Button, Card, FormLayout, Input } from '@vkontakte/vkui';
 import Icon24Add from '@vkontakte/icons/dist/24/add';
 
-import { useCreateForm } from './hooks';
+import { useCreateForm } from '../CreateForm/hooks';
 
-const CreateForm = ({ onSubmit, placeholder, actionTitle }) => {
+
+const ColumnCreateForm = ({ onSubmit }) => {
   const {
     name,
     status,
@@ -14,7 +15,7 @@ const CreateForm = ({ onSubmit, placeholder, actionTitle }) => {
     setFormMode,
     onChangeinput,
     isButtonMode,
-  } = useCreateForm(onSubmit);
+  } = useCreateForm({onSubmit});
 
   if (isButtonMode) {
     return (
@@ -22,9 +23,9 @@ const CreateForm = ({ onSubmit, placeholder, actionTitle }) => {
         onClick={setFormMode}
         before={<Icon24Add />}
         size="xl"
-        mode="outline"
+        mode="overlay_secondary"
       >
-        {actionTitle}
+        Добавить колонку
       </Button>
     );
   }
@@ -37,10 +38,10 @@ const CreateForm = ({ onSubmit, placeholder, actionTitle }) => {
           value={name}
           onChange={onChangeinput}
           status={status}
-          placeholder={placeholder}
+          placeholder="Введите название колонки"
         />
         <div>
-          <Button onClick={submit}>{actionTitle}</Button>
+          <Button onClick={submit}>Добавить</Button>
           <Button onClick={reset} mode="tertiary">Отменить</Button>
         </div>
         
@@ -49,10 +50,8 @@ const CreateForm = ({ onSubmit, placeholder, actionTitle }) => {
   );
 };
 
-CreateForm.propTypes = {
+ColumnCreateForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  actionTitle: PropTypes.string.isRequired,
 };
 
-export default CreateForm;
+export default ColumnCreateForm;

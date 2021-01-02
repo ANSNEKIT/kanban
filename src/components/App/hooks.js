@@ -32,6 +32,12 @@ const useNavState = (desks) => {
   return { activePanel, activeDesk, goToColumns, goToDesks };
 };
 
+export const usePopoutState = () => {
+  const [popout, setPopout] = useState(null);
+
+  return {popout, setPopout};
+};
+
 export const useCardState = () => {
   const [cards, setCards] = useState([]);
   const addCard = (newCard) => setCards([...cards, newCard]);
@@ -44,12 +50,14 @@ export const useAppState = () => {
   const desksState = useDeskState();
   const columnsState = useColumnState();
   const navState = useNavState(desksState.desks);
-  const cardState = useCardState()
+  const cardState = useCardState();
+  const popoutState = usePopoutState();
 
   return {
     ...desksState,
     ...columnsState,
     ...navState,
     ...cardState,
+    ...popoutState,
   };
 };

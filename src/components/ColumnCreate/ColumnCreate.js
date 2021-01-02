@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Div } from '@vkontakte/vkui';
 
-import CreateForm from '../CreateForm/CreateForm.js';
 import { createColumn } from '../../actions';
 import '../Column/Column.css';
 import Context from '../App/context.js';
+import ColumnCreateForm from './ColumnCreateForm.js';
 
 const ColumnCreate = () => {
   const {addColumn, activeDesk} = useContext(Context);
@@ -17,11 +17,7 @@ const ColumnCreate = () => {
 
   return (
     <Div className="Column">
-      <CreateForm
-        onSubmit={createItem}
-        placeholder="Введите название колонки"
-        actionTitle="Создать колонку"
-      />
+      <ColumnCreateForm onSubmit={createItem} />
     </Div>
   );
 }

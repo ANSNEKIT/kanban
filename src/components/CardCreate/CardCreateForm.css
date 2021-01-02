@@ -1,0 +1,18 @@
+.CardCreateForm__input {
+  font-size: inherit;
+  width: 100%;
+  outline: none;
+  box-sizing: border-box;
+  border: none;
+  margin-bottom: 16px;
+}
+
+.CardCreateForm__buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CardCreateForm__activeButton {
+  flex-grow: 1;
+}
