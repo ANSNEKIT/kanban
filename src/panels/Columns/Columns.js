@@ -1,23 +1,29 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import { PanelHeader, Gallery, PanelHeaderBack } from '@vkontakte/vkui';
+import { useRoute } from 'react-router5';
 
-import Column from '../../components/Column/Column';
 import './Columns.css';
+import Column from '../../components/Column/Column';
 import ColumnCreate from '../../components/ColumnCreate/ColumnCreate';
 import { getColumns } from '../../actions';
 import Context from '../../components/App/context';
 
 const Columns = () => {
-  const { activeDesk, columns, goToDesks, setColumns } = useContext(Context);
+  const { columns, goToDesks, setColumns, desks } = useContext(Context);
+  const { route: { params: { deskId } } } = useRoute();
+  const desk = desks.find(({id}) => id === deskId) || {};
 
   // Запрос в базу данных за колонками
   useEffect(() => {
-    getColumns(activeDesk.id).then((columns) => setColumns(columns));
-  }, []);
+    if (desk.id) {
+      getColumns(desk.id).then((columns) => setColumns(columns));
+    }
+    
+  }, [desk]);
 
   return (
     <Fragment>
-      <PanelHeader left={<PanelHeaderBack onClick={goToDesks} />}>Доска {activeDesk.name}</PanelHeader>
+      <PanelHeader left={<PanelHeaderBack onClick={goToDesks} />}>Доска {desk.name ? `«${desk.name}»` : '' }</PanelHeader>
 
       <Gallery
         className="Columns__list"
@@ -32,4 +38,4 @@ const Columns = () => {
   )
 };
 
-export default Columns
+export default Columns;

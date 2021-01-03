@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, Div, FormLayout } from '@vkontakte/vkui';
+import { Button, Card, Div } from '@vkontakte/vkui';
 import Icon24Add from '@vkontakte/icons/dist/24/add';
 import Icon24Dismiss from '@vkontakte/icons/dist/24/dismiss';
 

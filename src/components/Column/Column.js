@@ -18,11 +18,9 @@ const Column = ({ name, id }) => {
       .catch(console.error);
   };
 
-  const showColumnOptions = () => {
-    const close = () => setPopout(null);
-      
+  const showColumnOptions = () => {      
     setPopout((
-      <ActionSheet onClose={close}>
+      <ActionSheet onClose={() => setPopout(null)}>
         {osname === IOS && <ActionSheetItem autoclose mode="cancel">Отменить</ActionSheetItem>}
         <ActionSheetItem autoclose mode="destructive" onClick={deleteItem}>
           Удалить

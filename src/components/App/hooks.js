@@ -1,12 +1,19 @@
-import { useState } from 'react'
-import { panel } from './constants';
+import { useEffect, useState } from 'react';
+import { getDesks } from '../../actions';
+import {pages} from "../../router";
 
 
 const useDeskState = () => {
   const [desks, setDesks] = useState([]);
   const addDesk = (newDesk) => setDesks([...desks, newDesk]);
-  const removeDesk = (removeId) =>
+  const removeDesk = (removeId) => {
     setDesks(desks.filter(({ id }) => id !== removeId));
+  };
+  
+  // Запрос в базу данных за досками
+  useEffect(() => {
+    getDesks().then((desks) => setDesks(desks));
+  }, []);
 
   return { desks, addDesk, removeDesk, setDesks };
 };
@@ -20,22 +27,11 @@ const useColumnState = () => {
   return { columns, addColumn, removeColumn, setColumns };
 };
 
-const useNavState = (desks) => {
-  const [activePanel, setActivePanel] = useState(panel.desks);
-  const [activeDesk, setActiveDesk] = useState(null);
-  const goToColumns = (deskId) => {
-    setActiveDesk(desks.find(({ id }) => id === deskId));
-    setActivePanel(panel.columns);
-  };
-  const goToDesks = () => setActivePanel(panel.desks);
+const useNavState = () => {
+  const [activePanel, setActivePanel] = useState(null);  
+  const changeRoute = ({ route }) => setActivePanel(route.name);
 
-  return { activePanel, activeDesk, goToColumns, goToDesks };
-};
-
-export const usePopoutState = () => {
-  const [popout, setPopout] = useState(null);
-
-  return {popout, setPopout};
+  return { activePanel, changeRoute };
 };
 
 export const useCardState = () => {
@@ -44,6 +40,12 @@ export const useCardState = () => {
   const removeCard = (removeId) => setCards(cards.filter(({ id }) => id !== removeId));
 
   return {cards, setCards, addCard, removeCard};
+};
+
+export const usePopoutState = () => {
+  const [popout, setPopout] = useState(null);
+
+  return {popout, setPopout};
 };
 
 export const useAppState = () => {
