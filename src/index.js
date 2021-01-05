@@ -7,9 +7,13 @@ import ReactDOM from "react-dom";
 import * as backend from "./actions/index";
 import * as router from "./router/index";
 import AppContainer from "./components/App/AppContainer";
+import { createStore } from "redux";
+import { reducer } from "./reducers/reducer";
 
 const route = router.initialize();
 backend.initialize();
+
+const store = createStore(reducer);
 
 /* 
 // Init VK  Mini App
