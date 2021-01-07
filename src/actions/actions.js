@@ -12,7 +12,7 @@ export const addCard = (card) => ({ type: actionType.ADD_CARD, payload: {card} }
 export const removeCard = (removeId) => ({ type: actionType.REMOVE_CARD, payload: {removeId} });
 export const setCards = (cards) => ({ type: actionType.SET_CARDS, payload: {cards} });
 
-export const setActivePanel = (panel) => ({ type: SET_ACTIVE_PANEL, payload: {panel} });
-export const changeRoute = (route) => setActivePanel(route.name);
+export const setActivePanel = (panel) => ({ type: actionType.SET_ACTIVE_PANEL, payload: { panel } });
+export const changeRoute = ({ route }) => setActivePanel(route.name);
 
-export const setPopout = (popout) => ({ type: SET_POPOUT, payload: {popout} });
+export const setPopout = (popout) => ({ type: actionType.SET_POPOUT, payload: {popout} });

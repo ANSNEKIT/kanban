@@ -1,16 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Card, Div } from '@vkontakte/vkui';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import './ColumnCard.css';
-import { deleteCard } from '../../actions';
-import Context from '../App/context';
+import { deleteCard } from '../../actions/index';
+import { removeCard } from '../../actions/actions';
 
 const ColumnCard = ({ children, id }) => {
-  const {removeCard} = useContext(Context);
+  const dispatch = useDispatch();
+
   const deleteItem = () => {
     deleteCard(id)
-      .then(() => removeCard(id))
+      .then(() => dispatch(removeCard(id)))
       .catch(console.error);
   };
 

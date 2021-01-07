@@ -10,17 +10,17 @@ import AppContainer from "./components/App/AppContainer";
 import { createStore } from "redux";
 import { reducer } from "./reducers/reducer";
 
+/* 
+// Init VK  Mini App
+bridge.send("VKWebAppInit"); */
+
 const route = router.initialize();
 backend.initialize();
 
 const store = createStore(reducer);
 
-/* 
-// Init VK  Mini App
-bridge.send("VKWebAppInit"); */
-
-ReactDOM.render(<AppContainer router={route} />, document.getElementById("root"));
+ReactDOM.render(<AppContainer router={route} store={store} />, document.getElementById("root"));
 
 if (process.env.NODE_ENV === "development") {
   import("./eruda").then(({ default: eruda }) => {}); //runtime download
-}
+};

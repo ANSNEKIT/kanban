@@ -1,19 +1,22 @@
-import React, {Fragment, useEffect, useContext } from 'react';
+import React, {Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types'
 import { CardGrid, Div } from '@vkontakte/vkui';
+import { useDispatch, useSelector } from 'react-redux';
+
+import './Cards.css';
 import ColumnCard from '../ColumnCard/ColumnCard.js';
 import CardCreate from '../CardCreate/CardCreate.js';
 import { getCards } from '../../actions/index.js';
-import Context from '../App/context.js';
-import './Cards.css';
+import { setCards } from '../../actions/actions.js';
 
 const Cards = ({ columnId }) => {
-  const {cards, setCards} = useContext(Context);
+  const dispatch = useDispatch();
+  const cards = useSelector((state) => state.cards);
 
   // Запрос в базу данных за колонками
   useEffect(() => {
     getCards(columnId)
-      .then((cards) => setCards(cards));
+      .then((cards) => dispatch(setCards(cards)));
   }, []);
 
   return (

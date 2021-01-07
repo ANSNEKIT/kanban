@@ -1,47 +1,18 @@
-import * as actionType from '../actions/types';
+import * as actionType from "../actions/types";
 
 const initialState = {
   desks: [],
   columns: [],
   cards: [],
-  nav: null,
+  activePanel: null,
   popout: null,
 };
 
-export const reducer = (state = initialState, {type, payload}) => {
+export const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case actionType.ADD_DESK: {
-      const {desk} = payload;
-      const desks = {...state.desks, desk};
-
-      return {
-        ...state,
-        desks,
-      };
-    }
-
-    case actionType.SET_DESKS:  {
-      const {desks} = payload;
-
-      return {
-        ...state,
-        desks,
-      };
-    }
-
-    case actionType.REMOVE_DESK:  {
-      const {removeId} = payload;
-      const desks = desks.filter(({ id }) => id !== removeId);
-
-      return {
-        ...state,
-        desks,
-      };
-    }
-
     case actionType.ADD_COLUMN: {
-      const {column} = payload;
-      const columns = {...state.columns, column};
+      const { column } = payload;
+      const columns = [...state.columns, column];
 
       return {
         ...state,
@@ -49,8 +20,8 @@ export const reducer = (state = initialState, {type, payload}) => {
       };
     }
 
-    case actionType.SET_COLUMNS:  {
-      const {columns} = payload;
+    case actionType.SET_COLUMNS: {
+      const { columns } = payload;
 
       return {
         ...state,
@@ -58,9 +29,9 @@ export const reducer = (state = initialState, {type, payload}) => {
       };
     }
 
-    case actionType.REMOVE_COLUMN:  {
-      const {removeId} = payload;
-      const columns = columns.filter(({ id }) => id !== removeId);
+    case actionType.REMOVE_COLUMN: {
+      const { removeId } = payload;
+      const columns = state.columns.filter(({ id }) => id !== removeId);
 
       return {
         ...state,
@@ -68,50 +39,79 @@ export const reducer = (state = initialState, {type, payload}) => {
       };
     }
 
-    case actionType.ADD_CARD: {
-      const {card} = payload;
-      const cards = {...state.cards, card};
+    case actionType.ADD_DESK: {
+      const { desk } = payload;
+      const desks = [...state.desks, desk];
 
       return {
         ...state,
-        cards,
+        desks,
       };
     }
 
-    case actionType.SET_CARDS:  {
-      const {cards} = payload;
+    case actionType.SET_DESKS: {
+      const { desks } = payload;
 
       return {
         ...state,
-        cards,
+        desks,
       };
     }
 
-    case actionType.REMOVE_CARD:  {
-      const {removeId} = payload;
-      const cards = cards.filter(({ id }) => id !== removeId);
+    case actionType.REMOVE_DESK: {
+      const { removeId } = payload;
+      const desks = state.desks.filter(({ id }) => id !== removeId);
 
       return {
         ...state,
-        cards,
+        desks,
       };
     }
 
-    case actionType.SET_POPOUT:  {
-      const {popout} = payload;
-
-      return {
-        ...state,
-        popout,
-      };
-    }
-
-    case actionType.SET_ACTIVE_PANEL:  {
-      const {panel} = payload;
+    case actionType.SET_ACTIVE_PANEL: {
+      const { panel } = payload;
 
       return {
         ...state,
         activePanel: panel,
+      };
+    }
+
+    case actionType.ADD_CARD: {
+      const { card } = payload;
+      const cards = [...state.cards, card];
+
+      return {
+        ...state,
+        cards,
+      };
+    }
+
+    case actionType.SET_CARDS: {
+      const { cards } = payload;
+
+      return {
+        ...state,
+        cards,
+      };
+    }
+
+    case actionType.REMOVE_CARD: {
+      const { removeId } = payload;
+      const cards = state.cards.filter(({ id }) => id !== removeId);
+
+      return {
+        ...state,
+        cards,
+      };
+    }
+
+    case actionType.SET_POPOUT: {
+      const { popout } = payload;
+
+      return {
+        ...state,
+        popout,
       };
     }
 
