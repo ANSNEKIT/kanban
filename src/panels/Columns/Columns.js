@@ -15,7 +15,7 @@ const Columns = () => {
   const dispatch = useDispatch();
   const columns = useSelector((state) => state.columns);
   const desks = useSelector((state) => state.desks);
-  const goToDesks = () => dispatch(setActivePanel(pages.desk));
+  const goToDesks = () => dispatch(setActivePanel(pages.DESKS));
 
   const { route: { params: { deskId } } } = useRoute();
   const desk = desks.find(({id}) => id === deskId) || {};

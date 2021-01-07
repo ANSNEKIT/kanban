@@ -12,7 +12,6 @@ import { changeRoute } from "../../actions/actions";
 const App = () => {
   const dispatch = useDispatch();
   const activePanel = useSelector((state) => state.activePanel);
-  console.log(activePanel);
   const popout = useSelector((state) => state.popout);
   const { router, route } = useRoute();
 

@@ -9,7 +9,6 @@ import App from './App';
 
 
 const AppContainer = ({ router, store }) => { 
-  console.log('store= ', store);
   return (
     <RouterProvider router={router}>
       <Provider store={store}>
