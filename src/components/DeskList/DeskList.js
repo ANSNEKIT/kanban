@@ -3,8 +3,7 @@ import { CardGrid } from "@vkontakte/vkui";
 import { useDispatch, useSelector } from "react-redux";
 
 import DeskItem from "../DeskItem/DeskItem.js";
-import { getDesks } from "../../actions/index.js";
-import { setDesks } from "../../actions/actions.js";
+import { fetchDesks } from "../../actions/actions.js";
 
 
 const DeskList = () => {
@@ -13,8 +12,8 @@ const DeskList = () => {
 
   // Запрос в базу данных за досками
   useEffect(() => {
-    getDesks().then((desks) => dispatch(setDesks(desks)));
-  }, []);
+    dispatch(fetchDesks());
+  }, [dispatch]);
 
   if (!desks.length) {
     return null;

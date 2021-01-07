@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import { Button, Card, FormLayout, Input } from '@vkontakte/vkui';
 import Icon24Add from '@vkontakte/icons/dist/24/add';
 
-import { useCreateForm } from './hooks';
+import { useCreateForm } from "./hooks";
 
 const CreateForm = ({ onSubmit, placeholder, actionTitle }) => {
   const {
     name,
     status,
-    submit,
     reset,
+    submit,
     setFormMode,
-    onChangeinput,
+    onChangeInput,
     isButtonMode,
-  } = useCreateForm(onSubmit);
+  } = useCreateForm({ onSubmit });
 
   if (isButtonMode) {
     return (
@@ -29,13 +29,14 @@ const CreateForm = ({ onSubmit, placeholder, actionTitle }) => {
     );
   }
 
+
   return (
     <Card size="l" mode="shadow">
       <FormLayout onSubmit={submit}>
         <Input 
           autoFocus
           value={name}
-          onChange={onChangeinput}
+          onChange={onChangeInput}
           status={status}
           placeholder={placeholder}
         />

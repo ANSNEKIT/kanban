@@ -15,7 +15,7 @@ const CardCreateForm = ({ onSubmit }) => {
     submit,
     reset,
     setFormMode,
-    onChangeinput,
+    onChangeInput,
     isButtonMode,
   } = useCreateForm({onSubmit});
 
@@ -41,7 +41,7 @@ const CardCreateForm = ({ onSubmit }) => {
               className="CardCreateForm__input" 
               autoFocus
               value={name}
-              onChange={onChangeinput}
+              onChange={onChangeInput}
               status={status}
               placeholder="Введите название карточки"
             />

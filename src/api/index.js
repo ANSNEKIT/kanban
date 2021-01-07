@@ -128,4 +128,14 @@ export const createColumn = (name, deskId) => {
     .then((docRef) => docRef.get());
 };
 
-
+export const api = {
+  createDesk,
+  getDesks,
+  deleteDesk,
+  getColumns,
+  deleteColumn,
+  getCards,
+  deleteCard,
+  cardCreate,
+  createColumn,
+};

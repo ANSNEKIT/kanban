@@ -4,17 +4,13 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
 import './ColumnCard.css';
-import { deleteCard } from '../../actions/index';
+import { deleteCard } from '../../api/index';
 import { removeCard } from '../../actions/actions';
 
 const ColumnCard = ({ children, id }) => {
   const dispatch = useDispatch();
 
-  const deleteItem = () => {
-    deleteCard(id)
-      .then(() => dispatch(removeCard(id)))
-      .catch(console.error);
-  };
+  const deleteItem = () => dispatch(deleteCard(id));
 
   return (
     <Card size="l" mode="outline">

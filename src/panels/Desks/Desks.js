@@ -4,9 +4,7 @@ import { PanelHeader, Div } from '@vkontakte/vkui';
 import DeskList from '../../components/DeskList/DeskList';
 import DeskCreate from '../../components/DeskCreate/DeskCreate';
 
-
 const Desks = () => {
-
   return (
     <Fragment>
       <PanelHeader >Стартовый экран</PanelHeader>
@@ -16,6 +14,6 @@ const Desks = () => {
       <DeskList />	
     </Fragment>
   )
-}
+};
 
 export default Desks;

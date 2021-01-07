@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, FormLayout, Input } from '@vkontakte/vkui';
+import { Button, Card, FormLayout, Input } from "@vkontakte/vkui";
 import Icon24Add from '@vkontakte/icons/dist/24/add';
 
-import { useCreateForm } from '../CreateForm/hooks';
-
+import { useCreateForm } from "../CreateForm/hooks";
 
 const ColumnCreateForm = ({ onSubmit }) => {
   const {
     name,
     status,
-    submit,
     reset,
+    submit,
     setFormMode,
-    onChangeinput,
+    onChangeInput,
     isButtonMode,
-  } = useCreateForm({onSubmit});
+  } = useCreateForm({ onSubmit });
 
   if (isButtonMode) {
     return (
@@ -25,7 +24,7 @@ const ColumnCreateForm = ({ onSubmit }) => {
         size="xl"
         mode="overlay_secondary"
       >
-        Добавить колонку
+        Добавьте еще колонку
       </Button>
     );
   }
@@ -33,18 +32,18 @@ const ColumnCreateForm = ({ onSubmit }) => {
   return (
     <Card size="l" mode="shadow">
       <FormLayout onSubmit={submit}>
-        <Input 
+        <Input
           autoFocus
           value={name}
-          onChange={onChangeinput}
+          onChange={onChangeInput}
           status={status}
           placeholder="Введите название колонки"
         />
+
         <div>
           <Button onClick={submit}>Добавить</Button>
           <Button onClick={reset} mode="tertiary">Отменить</Button>
         </div>
-        
       </FormLayout>
     </Card>
   );

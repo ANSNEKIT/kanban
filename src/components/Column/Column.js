@@ -6,18 +6,13 @@ import { useDispatch } from 'react-redux';
 
 import './Column.css';
 import Cards from '../Cards/Cards';
-import { deleteColumn } from '../../actions/index';
-import { removeColumn, setPopout } from '../../actions/actions';
+import { deleteColumn, setPopout } from '../../actions/actions';
 
 const Column = ({ name, id }) => {
   const dispatch = useDispatch();
   const osname = usePlatform();
 
-  const deleteItem = () => {
-    deleteColumn(id)
-      .then(() => dispatch(removeColumn(id)))
-      .catch(console.error);
-  };
+  const deleteItem = () => dispatch(deleteColumn(id));
 
   const showColumnOptions = () => {      
     dispatch(setPopout((
