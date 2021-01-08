@@ -2,24 +2,20 @@ import "core-js/features/map";
 import "core-js/features/set";
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore, applyMiddleware } from "redux";
-import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
 // import bridge from "@vkontakte/vk-bridge";
 
 import * as backend from "./api/index";
 import * as router from "./router/index";
 import AppContainer from "./components/App/AppContainer";
-import { reducer } from "./reducers/reducer";
+import { getStore } from "./store/index";
 
 /* 
 // Init VK  Mini App
 bridge.send("VKWebAppInit"); */
 
 const route = router.initialize();
+const store = getStore();
 backend.initialize();
-
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(<AppContainer router={route} store={store} />, document.getElementById("root"));
 
